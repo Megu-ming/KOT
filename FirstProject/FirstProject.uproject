@@ -1,13 +1,16 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.4",
+	"EngineAssociation": "{D1585C42-477F-381A-C4E8-05B93E0B46A5}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
 		{
 			"Name": "FirstProject",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [

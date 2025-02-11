@@ -16,5 +16,14 @@ class FIRST_API AF1Enemy_Normal : public AF1Character
 public:
 	AF1Enemy_Normal();
 	
+	virtual void SetData(const FDataTableRowHandle& InDataTableRowHandle) override;
+	virtual void SetData(const FCharacterDataTableRow* InData) override;
+
+protected:
+	virtual void BeginPlay() override;
 	
+protected:
+	UPROPERTY(EditAnywhere)
+	USkeletalMeshComponent* Weapon;
+
 };

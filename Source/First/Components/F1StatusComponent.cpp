@@ -31,6 +31,16 @@ void UF1StatusComponent::BeginPlay()
 	
 }
 
+void UF1StatusComponent::SetStatus(FStatusInfo Status)
+{
+	StatInfo = Status;
+	UE_LOG(First_Log, Warning, TEXT("%s"), *(GetOwner()->GetName()));
+	UE_LOG(First_Log, Warning, TEXT("%d"), GetStatusValue(EStatusIndex::HP));
+	UE_LOG(First_Log, Warning, TEXT("%d"), GetStatusValue(EStatusIndex::MP));
+	UE_LOG(First_Log, Warning, TEXT("%d"), GetStatusValue(EStatusIndex::Stamina));
+	UE_LOG(First_Log, Warning, TEXT("%d"), GetStatusValue(EStatusIndex::Damage));
+}
+
 void UF1StatusComponent::InitStatus()
 {
 	if(StatusDataTableRow)

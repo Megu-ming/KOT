@@ -29,11 +29,18 @@ void AF1Character::SetData(const FCharacterDataTableRow* InData)
 {
 	CharacterDataTableRow = InData;
 
+	if (!CharacterDataTableRow)
+	{
+		UE_LOG(First_Log, Warning, TEXT("%s No DataTableRow! "), *GetName());
+		return;
+	}
+
+	Name = CharacterDataTableRow->Name;
 	GetMesh()->SetSkeletalMesh(CharacterDataTableRow->SkeletalMesh);
 	GetMesh()->SetRelativeTransform(CharacterDataTableRow->SkeletalMeshTransform);
 	GetMesh()->SetAnimInstanceClass(CharacterDataTableRow->AnimInstanceClass);
-
-	FStatusDataTableRow* StatusDataTableRow = CharacterDataTableRow->StatusData.GetRow<FStatusDataTableRow>(TEXT(""));
+		
+	FStatusDataTableRow* StatusDataTableRow = CharacterDataTableRow->StatusData.GetRow<FStatusDataTableRow>(*Name);
 	if (!Status)
 	{
 		Status = NewObject<UF1StatusComponent>(this, StatusDataTableRow->StatusComponentClass, TEXT("Status"));
@@ -47,7 +54,7 @@ void AF1Character::SetData(const FCharacterDataTableRow* InData)
 void AF1Character::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	SetData(DataTableRowHandle);
 }
 

@@ -10,7 +10,7 @@ UENUM()
 enum EStatusIndex : uint8
 {
 	HP,
-	Mp,
+	MP,
 	Stamina,
 	Damage,
 	End
@@ -55,7 +55,7 @@ public:
 	FStatusInfo GetStatus() { return StatInfo; }
 	int32 GetStatusValue(EStatusIndex Index) { return StatInfo.Status[Index]; }
 	void SetStatus(EStatusIndex Index, int32 Value) { StatInfo.Status[Index] = Value; }
-	void SetStatus(FStatusInfo Status) { StatInfo = Status; }
+	void SetStatus(FStatusInfo Status);
 
 protected:
 	void InitStatus();

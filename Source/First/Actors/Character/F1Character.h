@@ -14,6 +14,10 @@ struct FCharacterDataTableRow : public FTableRowBase
 {
 	GENERATED_BODY()
 public:
+
+	UPROPERTY(EditAnywhere, Category = "Character")
+	FString Name;
+
 	UPROPERTY(EditAnywhere, Category = "Character")
 	USkeletalMesh* SkeletalMesh;
 
@@ -23,8 +27,14 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Character")
 	TSubclassOf<UAnimInstance> AnimInstanceClass;
 
-	UPROPERTY(EditAnywhere, meta = (RowType = "/Script/First.StatusDataTableRow"))
+	UPROPERTY(EditAnywhere, Category = "Character", meta = (RowType = "/Script/First.StatusDataTableRow"))
 	FDataTableRowHandle StatusData;
+
+	UPROPERTY(EditAnywhere, Category = "Weapon")
+	USkeletalMesh* WeaponSkeletalMesh;
+
+	UPROPERTY(EditAnywhere, Category = "Weapon")
+	FTransform WeaponTransform;
 };
 
 
@@ -57,12 +67,14 @@ protected:
 
 	const FCharacterDataTableRow* CharacterDataTableRow = nullptr;
 
-protected:
-	
-	
+protected:	
 	UPROPERTY(VisibleAnywhere, Category = Status)
 	UF1StatusComponent* Status;
 
 	UPROPERTY(VisibleAnywhere, Category = ID)
+	FString Name;
+
+	UPROPERTY(VisibleAnywhere, Category = ID)
 	ECharacterID ID;
+
 };

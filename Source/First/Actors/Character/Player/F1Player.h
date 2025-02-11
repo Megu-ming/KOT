@@ -17,6 +17,9 @@ class FIRST_API AF1Player : public AF1Character
 public:
 	AF1Player();
 
+	virtual void SetData(const FDataTableRowHandle& InDataTableRowHandle) override;
+	virtual void SetData(const FCharacterDataTableRow* InData) override;
+
 public:
 	void Attack();
 	

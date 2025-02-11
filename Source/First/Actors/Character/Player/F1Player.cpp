@@ -45,6 +45,16 @@ AF1Player::AF1Player()
 	ID = ECharacterID::Player;
 }
 
+void AF1Player::SetData(const FDataTableRowHandle& InDataTableRowHandle)
+{
+	Super::SetData(InDataTableRowHandle);
+}
+
+void AF1Player::SetData(const FCharacterDataTableRow* InData)
+{
+	Super::SetData(InData);
+}
+
 void AF1Player::Attack()
 {
 	UE_LOG(First_Log, Warning, TEXT("OnAttack"));
